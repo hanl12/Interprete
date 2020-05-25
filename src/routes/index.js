@@ -13,18 +13,23 @@ router.get('/', (req, res) =>{
 router.post('/add', (req, res) =>{
     let texto = req.body.texto;
     try {
-        var prueba = peg.parse("a");
+        var prueba = peg.parse(texto);
     }catch (e) {
-        let grammar = "Error gramático";
+        console.log("Error gramático")
         prueba = "";
     }
     if(prueba != "")
     {
         var js = escodegen.generate(prueba);
-        //var ejecucion = eval(js);
+        try{
+            var resultado = eval(js);
+            console.log(js);
+        }catch(e){
+            console.log(e.message);
+        }
     }
     
-    res.render('compilador.html', {tittle: 'jajka'});
+    res.render('compilador.html', {tittle: js});
 });
 
 module.exports = router;

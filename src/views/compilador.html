@@ -17,7 +17,14 @@
 <body>
     <div class="container">
         <textarea name="compilado" id="compilado" class="form-control" disabled="true" cols="30" rows="10"></textarea>
-        <h1><%= tittle %></h1>
+        <div id="jaja"></div>
+        <script>try{
+            <%tittle%>;
+            document.getElementById('jaja').innerHTML = "PERFECTO";
+        }catch{
+            document.getElementById('jaja').innerHTML = "Error sintático";
+        } </script>
+        
     </div>
     
 </body>
