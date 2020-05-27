@@ -12,18 +12,48 @@
         }
         
     </style>
-    <title>Document</title>
+    <title>Interprete</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container text-center py-5">
         <h1>COMPILADOR</h1>
-        <form action="/add" method="post">
-            <textarea class="form-control" name="texto" id="texto" cols="30" rows="10"></textarea>
-            <button class="btn btn-primary">ENVIAR</button>
-        </form>
+        <div class="col">
+            <form action="/add" method="post">
+                <table width="100%">
+                    <tr>
+                        <td width="7%">
+                            <textarea id="txtLineNumbers0" readonly="true" disabled="true"  rows="15" class="form-control"></textarea>							
+                        </td>
+                        <td width="100%"> 
+                            <textarea class="form-control" style="border-color: black; border-radius: 10px; background-color:#F0F0F0; " name="texto" id="texto" cols="30" rows="15">
+Variable a -> 3
+Variable b -> 4|
+SiSeCumple(a<2){
+    a -> 1|
+}SiNoSeCumple{
+    a -> 1|
+}
+                            </textarea>                          
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <button class="btn btn-primary" style="font-size: 20px;">VERIFICAR</button>
+            </form>
+        </div>
+        
         
         
     </div>
-    
+    <script>
+        var strLineasTxtLineNumbers0 = '';
+
+        for (var i = 1; i < 15; i++) {
+            strLineasTxtLineNumbers0 += i + '\n';
+        }
+
+        document.getElementById("txtLineNumbers0").value = strLineasTxtLineNumbers0;
+        document.getElementById("txtLineNumbers0").scrollTop = 0;
+    </script>
 </body>
 </html>

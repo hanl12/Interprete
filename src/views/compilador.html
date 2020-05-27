@@ -10,22 +10,35 @@
             background-color: #8EC5FC;
             background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
         }
-        
+        .content-height{
+            background-color: #81F79F;
+            <%=color%>;
+            font-size: 30px;
+            border-radius: 10px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }        
     </style>
-    <title>Document</title>
+    <title>Interprete</title>
 </head>
 <body>
-    <div class="container">
-        <textarea name="compilado" id="compilado" class="form-control" disabled="true" cols="30" rows="10"></textarea>
-        <div id="jaja"></div>
-        <script>try{
-            <%tittle%>;
-            document.getElementById('jaja').innerHTML = "PERFECTO";
-        }catch{
-            document.getElementById('jaja').innerHTML = "Error sintático";
-        } </script>
-        
+    <div class="container text-center py-5">
+        <textarea name="compilado" id="compilado" class="form-control" disabled="true" cols="30" rows="10"><%=compilado%></textarea>
+        <div class="content-height"><%=tittle%></div><br>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary" onclick="ats()" style="font-size: 20px;">Traducir código a JavaScript</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" style="font-size: 20px;">Ejecutar</button>
+            </div>
+        </div><br>
+        <textarea name="compilado2" style="visibility: hidden;" id="compilado2" class="form-control" disabled="true" cols="30" rows="10"><%=atss%></textarea>
     </div>
-    
+    <script>
+        function ats(){
+            var text = document.getElementById('compilado2');
+            text.style.visibility = 'visible';
+        }
+    </script>
 </body>
 </html>

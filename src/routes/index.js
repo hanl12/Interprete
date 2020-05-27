@@ -11,25 +11,37 @@ router.get('/', (req, res) =>{
 //     res.render('compilador.html');
 // })
 router.post('/add', (req, res) =>{
-    let texto = req.body.texto;
+    var texto = req.body.texto;
+    var sw = 0;
     try {
-        var prueba = peg.parse(texto);
+        var parseado = "";
+        parseado = peg.parse(texto);
     }catch (e) {
-        console.log("Error gramático")
-        prueba = "";
-    }
-    if(prueba != "")
-    {
-        var js = escodegen.generate(prueba);
-        try{
-            var resultado = eval(js);
-            console.log(js);
-        }catch(e){
-            console.log(e.message);
-        }
+        sw = 1;
+        parseado = "";
     }
     
-    res.render('compilador.html', {tittle: js});
+
+    if(sw!=1 && parseado != "")
+    {
+        var js = escodegen.generate(parseado);
+        try{
+            eval(js);
+        }
+        catch
+        {
+            sw = 1;
+        }
+    }
+
+    if(sw == 1)
+    {
+        res.render('compilador.html', {tittle: "Error sintáctico",compilado: texto,color: "background-color: #F78181;",atss: "Hay un error sintáctico"});
+    }
+    else
+    {
+        res.render('compilador.html', {tittle: "Texto válido",compilado: texto,color: "background-color: #81F79F;", atss: js});
+    }
 });
 
 module.exports = router;
