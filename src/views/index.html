@@ -50,13 +50,14 @@ Cuando(i=0;i<100;i++){
         <div class="col">
             <button class="btn btn-primary" onclick="reser()" style="font-size: 20px;">Ver palabras reservadas</button>
         </div><br>
-        <textarea name="reserv" style="visibility: hidden;" id="reserv" class="form-control" disabled="true" cols="30" rows="7">
+        <textarea name="reserv" style="visibility: hidden;" id="reserv" class="form-control" disabled="true" cols="30" rows="8">
             Se deben respetar las mayúsculas
             if = SiSeCumple, else = SiNoSeCumple,Function = Funcion, while = Durante, for = Cuando, var = Variable
 
             Operadores
             Separadador(;) = |, Asignación = ->
             No es necesario separar las líneas de código con el separador "|", debido a que el intérprete capta los saltos de línea y espacios en blanco.
+            Nota: La función que usamos para ejecutar es eval(), algunas veces esta función no funciona de la mejor manera y puede buggear la aplicación.
         </textarea>
     </div>
     <script>
