@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
         body{
@@ -22,6 +23,7 @@
 </head>
 <body>
     <div class="container text-center py-5">
+        <h1 style="font-family: 'Bebas Neue', cursive; font-size: 50px">Código verificado</h1>
         <textarea name="compilado" id="compilado" class="form-control" disabled="true" cols="30" rows="10"><%=compilado%></textarea>
         <div class="content-height"><%=tittle%></div><br>
         <div class="row">
@@ -29,15 +31,20 @@
                 <button class="btn btn-primary" onclick="ats()" style="font-size: 20px;">Traducir código a JavaScript</button>
             </div>
             <div class="col">
-                <button class="btn btn-primary" style="font-size: 20px;">Ejecutar</button>
+                <button class="btn btn-primary" onclick="ejecu()" style="font-size: 20px;">Ejecutar</button>
             </div>
         </div><br>
-        <textarea name="compilado2" style="visibility: hidden;" id="compilado2" class="form-control" disabled="true" cols="30" rows="10"><%=atss%></textarea>
+        <textarea name="compilado2" style="display: none;" id="compilado2" class="form-control" disabled="true" cols="30" rows="10"><%=atss%></textarea>
+        <textarea name="ejec" style="display: none;" id="eject" class="form-control" disabled="true" cols="30" rows="10"><%=ejecucion%></textarea>
     </div>
     <script>
         function ats(){
             var text = document.getElementById('compilado2');
-            text.style.visibility = 'visible';
+            text.style.display = 'block';
+        }
+        function ejecu(){
+            var eje = document.getElementById('eject');
+            eje.style.display = 'block';
         }
     </script>
 </body>

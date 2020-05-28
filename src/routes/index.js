@@ -7,9 +7,6 @@ router.get('/', (req, res) =>{
     res.render('index.html');
 });
 
-// router.get('/compilador', (req,res) =>{
-//     res.render('compilador.html');
-// })
 router.post('/add', (req, res) =>{
     var texto = req.body.texto;
     var sw = 0;
@@ -19,6 +16,7 @@ router.post('/add', (req, res) =>{
     }catch (e) {
         sw = 1;
         parseado = "";
+        console.log(e.message);
     }
     
 
@@ -26,7 +24,7 @@ router.post('/add', (req, res) =>{
     {
         var js = escodegen.generate(parseado);
         try{
-            eval(js);
+            var evalu = eval(js);
         }
         catch
         {
@@ -36,11 +34,11 @@ router.post('/add', (req, res) =>{
 
     if(sw == 1)
     {
-        res.render('compilador.html', {tittle: "Error sintáctico",compilado: texto,color: "background-color: #F78181;",atss: "Hay un error sintáctico"});
+        res.render('compilador.html', {tittle: "Error sintáctico",compilado: texto,color: "background-color: #F78181;",atss: "Hay un error sintáctico",ejecucion: "Hay un error sintáctico"});
     }
     else
     {
-        res.render('compilador.html', {tittle: "Texto válido",compilado: texto,color: "background-color: #81F79F;", atss: js});
+        res.render('compilador.html', {tittle: "Código válido",compilado: texto,color: "background-color: #81F79F;", atss: js,ejecucion: evalu});
     }
 });
 
